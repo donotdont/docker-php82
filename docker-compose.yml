@@ -1,0 +1,25 @@
+version: '2.2'
+
+services:
+  php-fpm:
+    build:
+     context: .
+    image: php8.2-fpm
+#    ports:
+#     - '9082:9000'
+    volumes:
+#     - '/home/ubuntu/blog:/home/ubuntu/blog'
+#     - '/home/ubuntu/cs-wp:/home/ubuntu/cs-wp'
+     - '/home/ubuntu:/home/ubuntu'
+     - '/var/www:/var/www'
+#    command: >
+#     bash -c "docker-php-ext-install mysqli && docker-php-ext-enable mysqli"
+#    links:
+#     - mysql
+    extra_hosts:
+     - 'host.docker.internal:host-gateway'
+#    extra_hosts:
+#     - 'host.docker.internal:host-gateway'
+#     - 'localhost:192.168.224.1'
+#     - 'mysql:127.0.0.1'
+    network_mode: host
